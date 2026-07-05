@@ -465,14 +465,16 @@ h1 i {
 .countdown {
   position: absolute;
   right: clamp(24px, 5vw, 72px);
-  bottom: clamp(30px, 5vw, 62px);
+  bottom: clamp(68px, 9vh, 108px);
   width: min(330px, 36vw);
   opacity: 0;
+  color: #fff;
+  text-shadow: 0 2px 16px rgba(8, 24, 20, 0.7);
 }
 
 .countdown p {
   margin-bottom: 16px;
-  color: rgba(255, 250, 241, 0.76);
+  color: #fff;
   font-family: "Playfair Display", Georgia, serif;
   letter-spacing: 0.12em;
 }
@@ -495,6 +497,7 @@ h1 i {
 }
 
 .countdown strong {
+  color: #fff;
   font-family: "Playfair Display", Georgia, serif;
   font-size: 26px;
 }
@@ -537,7 +540,7 @@ h1 i {
 
 .countdown span {
   margin-top: 4px;
-  color: rgba(255, 250, 241, 0.72);
+  color: #fff;
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -981,7 +984,7 @@ h2,
   .hero-full-vow { top: 22%; font-size: 15px; letter-spacing: 0.08em; }
   .hero-date { bottom: 150px; left: 18px; }
   .hero-date > span { font-size: 46px; }
-  .countdown { right: 18px; bottom: 24px; left: 18px; width: auto; }
+  .countdown { right: 18px; bottom: 32px; left: 18px; width: auto; }
   .countdown > p { display: none; }
   .hero-rsvp { top: auto; right: 18px; bottom: 116px; width: 64px; height: 64px; transform: none; }
   .scroll-cue { top: auto; bottom: 42%; left: -23px; }

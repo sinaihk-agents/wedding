@@ -53,10 +53,11 @@ function initHeroMotion() {
       duration: 0.38,
       ease: "power2.inOut"
     }, 0.04)
+    .to(".countdown", { opacity: 1, duration: 0.18, ease: "power1.out" }, 0.06)
     .to(".hero-photo", { scale: 1, yPercent: 0, duration: 0.46, ease: "none" }, 0.04)
     .to(".hero-veil", { opacity: 0.48, duration: 0.22, ease: "none" }, 0.2)
     .to(".hero-full-vow", { y: -10, opacity: 1, duration: 0.2, ease: "power2.out" }, 0.38)
-    .to(".hero-date, .countdown, .hero-rsvp", { opacity: 1, duration: 0.2, ease: "power1.out" }, 0.46)
+    .to(".hero-date, .hero-rsvp", { opacity: 1, duration: 0.2, ease: "power1.out" }, 0.46)
     .to(".hero-stage", { opacity: 1, duration: 0.34 }, 0.66);
 
   const albumTrack = document.querySelector(".album-track");
