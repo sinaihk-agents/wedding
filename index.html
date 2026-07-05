@@ -3,18 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>森城之約 | 電子婚禮請柬</title>
+    <title>Megan &amp; Kenneth | Wedding Invitation</title>
     <meta
       name="description"
-      content="森林與香港城市主題電子婚禮請柬，包含婚禮詳情、流程、地點和 RSVP。"
+      content="Megan 與 Kenneth 的電子婚禮請柬，包含證婚、晚宴、地點和 RSVP 資料。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://use.typekit.net/hjc4qae.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" href="assets/hong-kong-peak.jpg" as="image" />
+    <link rel="preload" href="photo/733194703_1002865139310323_2693161374526840242_n.png" as="image" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -27,9 +28,8 @@
         <span class="brand-text">森城之約</span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="開關選單">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span class="menu-open-label">Menu</span>
+        <span class="menu-close-label">Close</span>
       </button>
       <nav id="site-nav" class="site-nav">
         <a href="#story">相簿</a>
@@ -42,96 +42,92 @@
 
     <main id="main">
       <section id="top" class="hero" aria-labelledby="hero-title">
-        <div class="hero-photo" role="img" aria-label="從太平山俯瞰香港城市、海港與山林"></div>
-        <div class="hero-veil" aria-hidden="true"></div>
-        <div class="hero-florals" aria-hidden="true"></div>
+        <div class="hero-stage">
+          <div class="hero-visual">
+            <div class="hero-photo" role="img" aria-label="Megan 與 Kenneth 在香港城市中拍攝婚照"></div>
+            <div class="hero-veil" aria-hidden="true"></div>
+            <div class="hero-florals" aria-hidden="true"></div>
+          </div>
 
-        <div class="hero-content reveal">
-          <p class="eyebrow">Forest in the City</p>
-          <p class="save-date">Save the Date</p>
-          <h1 id="hero-title">新郎 <span>&amp;</span> 新娘</h1>
-          <p class="hero-copy">
-            誠邀你在山林與維港燈火之間，見證我們交換誓言，展開人生新的章節。
-          </p>
-          <div class="hero-meta" aria-label="婚禮日期和地點">
-            <span>2026.12.12</span>
-            <span>香港・太平山花園露台</span>
+          <div class="hero-content">
+            <p class="hero-kicker">Forest in the City</p>
+            <h1 id="hero-title"><span class="hero-name">Megan</span><i>&amp;</i><span class="hero-name">Kenneth</span></h1>
+            <p class="hero-vow">在山林與維港燈火之間<br />見證我們交換誓言</p>
           </div>
-          <div class="hero-actions">
-            <a class="button primary" href="#rsvp">回覆出席</a>
-            <a class="button ghost" href="#details">婚禮詳情</a>
+
+          <div class="hero-date" aria-label="婚禮日期和地點">
+            <span>27</span>
+            <p><b>June 2027</b>The Glam</p>
           </div>
+
+          <aside class="countdown" aria-label="婚禮倒數">
+            <p>Wedding Countdown</p>
+            <div class="countdown-grid">
+              <div><strong data-count="days">--</strong><span>Days</span></div>
+              <div><strong data-count="hours">--</strong><span>Hours</span></div>
+              <div><strong data-count="minutes">--</strong><span>Mins</span></div>
+            </div>
+          </aside>
+
+          <a class="hero-rsvp" href="#rsvp">RSVP <span aria-hidden="true">↗</span></a>
+          <div class="scroll-cue" aria-hidden="true"><span>Scroll Down</span><i></i></div>
         </div>
-
-        <aside class="countdown reveal" aria-label="婚禮倒數">
-          <p>Wedding Countdown</p>
-          <div class="countdown-grid">
-            <div>
-              <strong data-count="days">--</strong>
-              <span>Days</span>
-            </div>
-            <div>
-              <strong data-count="hours">--</strong>
-              <span>Hours</span>
-            </div>
-            <div>
-              <strong data-count="minutes">--</strong>
-              <span>Mins</span>
-            </div>
-          </div>
-        </aside>
       </section>
 
-      <section id="story" class="section album-section">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Photo Album</p>
-          <h2>把山林、海港與城市燈火收藏成相簿</h2>
-          <p>
-            一頁是太平山的樹影，一頁是維港的光。請在婚禮當日，與我們一起把新的回憶放進這本相簿。
-          </p>
-        </div>
-        <div class="album-grid" aria-label="婚禮相簿預覽">
-          <figure class="album-card album-card-large reveal">
-            <img src="assets/hong-kong-peak.jpg" alt="從太平山俯瞰香港城市與維港" />
-            <figcaption>
-              <span>01</span>
-              <strong>Victoria Harbour</strong>
-              <small>城市燈火亮起時，婚禮也慢慢開始。</small>
-            </figcaption>
-          </figure>
-          <figure class="album-card reveal">
-            <img src="assets/victoria-peak-forest.jpg" alt="太平山森林與樹影" />
-            <figcaption>
-              <span>02</span>
-              <strong>Peak Garden</strong>
-              <small>在山林之間，留下最安靜的一頁。</small>
-            </figcaption>
-          </figure>
-          <figure class="album-card album-note reveal">
-            <blockquote>
-              “Love grows where city lights meet the trees.”
-            </blockquote>
-            <figcaption>
-              <span>03</span>
-              <strong>Wedding Day</strong>
-              <small>期待你成為相簿裡最珍貴的一格。</small>
-            </figcaption>
-          </figure>
+      <section id="story" class="album-section">
+        <div class="album-pin">
+          <div class="album-track" aria-label="婚禮相簿預覽">
+            <header class="album-intro">
+              <p class="eyebrow">Photo Album · 01—07</p>
+              <h2>Our moments,<br />framed in Hong Kong.</h2>
+              <p>從城市街角到海邊日光，收藏我們走向婚禮的每一步。</p>
+              <span class="album-direction"><b class="desktop-copy">Scroll to explore</b><b class="mobile-copy">Swipe to explore</b><i aria-hidden="true">→</i></span>
+            </header>
+            <figure class="album-slide album-slide-wide">
+              <img src="photo/733194703_1002865139310323_2693161374526840242_n.png" alt="新人站在香港中環建築群前" />
+              <figcaption><span>01</span><strong>City of Us</strong><small>Hong Kong</small></figcaption>
+            </figure>
+            <figure class="album-slide album-slide-tall">
+              <img src="photo/731379231_1107231992239555_8265950699799130826_n.png" alt="新人穿上禮服走過拱廊" />
+              <figcaption><span>02</span><strong>Into the Light</strong><small>Central</small></figcaption>
+            </figure>
+            <figure class="album-slide album-slide-wide">
+              <img src="photo/733542531_886459307259696_3574529452284324969_n.png" alt="新人牽手走在海邊公路" />
+              <figcaption><span>03</span><strong>Side by Side</strong><small>By the Sea</small></figcaption>
+            </figure>
+            <figure class="album-slide album-slide-wide">
+              <img src="photo/733771030_1330474798627740_5379805156468132645_n.png" alt="新人在古典建築前牽手奔跑" />
+              <figcaption><span>04</span><strong>Run With Me</strong><small>Old Hong Kong</small></figcaption>
+            </figure>
+            <figure class="album-slide album-slide-tall">
+              <img src="photo/731673699_3177305022476951_5830625168284288922_n.png" alt="穿黑色禮服的新人在草地上牽手" />
+              <figcaption><span>05</span><strong>Always</strong><small>Sunlit Afternoon</small></figcaption>
+            </figure>
+            <figure class="album-slide album-slide-wide">
+              <img src="photo/732001307_1442659467685952_1941058262801895787_n.png" alt="新人在紅色背景前牽手與捧花特寫" />
+              <figcaption><span>06</span><strong>The Promise</strong><small>Studio Portrait</small></figcaption>
+            </figure>
+            <figure class="album-slide album-slide-tall">
+              <img src="photo/731673767_2187221902100757_3581033819032206041_n.png" alt="新人在紅色背景前分享訂婚喜悅" />
+              <figcaption><span>07</span><strong>To Forever</strong><small>Wedding Day</small></figcaption>
+            </figure>
+          </div>
+          <div class="album-progress" aria-hidden="true"><span></span></div>
         </div>
       </section>
 
       <section id="details" class="section details-section">
-        <div class="details-photo reveal" role="img" aria-label="太平山森林景色"></div>
+        <div class="details-photo reveal" role="img" aria-label="Megan 與 Kenneth 穿上婚禮服裝走過拱廊"></div>
         <div class="details-panel reveal">
           <p class="eyebrow">Wedding Details</p>
           <h2>婚禮詳情</h2>
           <p class="lead">
-            一場戶外證婚與晚宴，從夕陽、花園、香檳，到香港夜景慢慢亮起。
+            誠邀你出席我們的證婚儀式與晚宴，一起見證承諾，分享屬於這一晚的喜悅。
           </p>
           <dl class="info-list">
             <div>
               <dt>日期</dt>
-              <dd>2026 年 12 月 12 日（星期六）</dd>
+              <dd>2027 年 6 月 27 日（星期日）</dd>
             </div>
             <div>
               <dt>證婚</dt>
@@ -143,7 +139,7 @@
             </div>
             <div>
               <dt>地點</dt>
-              <dd>香港太平山花園露台</dd>
+              <dd>The Glam</dd>
             </div>
             <div>
               <dt>Dress Code</dt>
@@ -169,8 +165,8 @@
           <article class="timeline-item reveal">
             <time>16:30</time>
             <div>
-              <h3>戶外證婚</h3>
-              <p>在林蔭與城市天際線前交換誓言。</p>
+              <h3>證婚儀式</h3>
+              <p>在家人與朋友見證下交換誓言。</p>
             </div>
           </article>
           <article class="timeline-item reveal">
@@ -183,7 +179,7 @@
           <article class="timeline-item reveal">
             <time>19:00</time>
             <div>
-              <h3>婚宴</h3>
+              <h3>Dinner</h3>
               <p>晚宴、祝酒、音樂與我們最珍惜的人。</p>
             </div>
           </article>
@@ -193,13 +189,13 @@
       <section id="venue" class="section venue-section">
         <div class="venue-copy reveal">
           <p class="eyebrow">Venue</p>
-          <h2>香港・太平山花園露台</h2>
+          <h2>The Glam</h2>
           <p>
-            山林在身後，城市在眼前。建議賓客乘搭的士或專車上山，場地附近設有落客區。
+            證婚與晚宴將於 The Glam 舉行。請預留充足時間到達，與我們從儀式開始分享這個重要日子。
           </p>
           <a
             class="button dark"
-            href="https://www.google.com/maps/search/Victoria+Peak+Hong+Kong"
+            href="https://www.google.com/maps/search/The+Glam+Hong+Kong"
             target="_blank"
             rel="noreferrer"
           >
@@ -207,11 +203,11 @@
           </a>
         </div>
         <div class="venue-card reveal" aria-label="交通資料">
-          <p class="card-label">Guest Notes</p>
-          <h3>交通提示</h3>
+          <p class="card-label">Wedding Day</p>
+          <h3>賓客提示</h3>
           <ul>
-            <li>中環港鐵站：約 18 分鐘車程</li>
-            <li>山頂纜車總站：約 6 分鐘步行</li>
+            <li>證婚儀式：下午 4:30</li>
+            <li>Dinner：晚上 7:00</li>
             <li>建議於證婚前 30 分鐘到達</li>
           </ul>
         </div>
@@ -221,7 +217,7 @@
         <div class="rsvp-copy reveal">
           <p class="eyebrow">RSVP</p>
           <h2>期待你的回覆</h2>
-          <p>請於 2026 年 11 月 12 日前回覆，讓我們準備座位與晚宴安排。</p>
+          <p>請於 2027 年 5 月 27 日前回覆，讓我們準備座位與晚宴安排。</p>
         </div>
         <form class="rsvp-form reveal" id="rsvp-form">
           <label>
@@ -230,7 +226,7 @@
           </label>
           <label>
             <span>出席狀態</span>
-            <select name="attendance" required>
+            <select name="status" required>
               <option value="">請選擇</option>
               <option value="yes">欣然出席</option>
               <option value="no">未能出席</option>
@@ -238,11 +234,11 @@
           </label>
           <label>
             <span>出席人數</span>
-            <input name="guests" type="number" min="1" max="6" value="1" />
+            <input name="number" type="number" min="1" max="6" value="1" required />
           </label>
           <label>
             <span>飲食備註</span>
-            <textarea name="note" rows="4" placeholder="素食、敏感食物或其他需要"></textarea>
+            <textarea name="remarks" rows="4" placeholder="素食、敏感食物或其他需要"></textarea>
           </label>
           <button class="button primary submit-button" type="submit">送出回覆</button>
           <p class="form-message" role="status" aria-live="polite"></p>
@@ -251,10 +247,12 @@
     </main>
 
     <footer class="site-footer">
-      <p>新郎 &amp; 新娘</p>
+      <p>Megan &amp; Kenneth</p>
       <span>Love grows where city lights meet the trees.</span>
     </footer>
 
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
