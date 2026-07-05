@@ -4,6 +4,27 @@ const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".site-nav");
 const form = document.querySelector("#rsvp-form");
 const message = document.querySelector(".form-message");
+const calendarButton = document.querySelector("#add-calendar");
+
+if (calendarButton) {
+  const calendarEvent = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Megan & Kenneth//Wedding Invitation//EN",
+    "CALSCALE:GREGORIAN",
+    "BEGIN:VEVENT",
+    "UID:megan-kenneth-wedding-20270627@wedding",
+    "DTSTAMP:20260705T000000Z",
+    "DTSTART:20270627T083000Z",
+    "DTEND:20270627T143000Z",
+    "SUMMARY:Megan & Kenneth Wedding",
+    "LOCATION:The Glam",
+    "DESCRIPTION:Wedding ceremony at 4:30 PM and dinner at 7:00 PM.",
+    "END:VEVENT",
+    "END:VCALENDAR"
+  ].join("\r\n");
+  calendarButton.href = URL.createObjectURL(new Blob([calendarEvent], { type: "text/calendar;charset=utf-8" }));
+}
 
 function initHeroMotion() {
   if (!window.gsap || !window.ScrollTrigger) return;
@@ -18,21 +39,25 @@ function initHeroMotion() {
       start: "top top",
       end: "bottom bottom",
       scrub: 1.1,
-      invalidateOnRefresh: true
+      invalidateOnRefresh: true,
+      onUpdate: (self) => header.classList.toggle("hero-photo-active", self.progress > 0.2 && self.progress < 0.9)
     }
   });
 
   heroTimeline
-    .to(".hero-photo", { scale: 1, yPercent: 4, ease: "none" }, 0)
-    .to(".hero-visual", { clipPath: "inset(7% 9% 9% 9%)", ease: "power2.inOut" }, 0.08)
-    .to(".hero-name:first-child", { xPercent: -32, opacity: 0, ease: "power2.in" }, 0.05)
-    .to(".hero-name:last-child", { xPercent: 32, opacity: 0, ease: "power2.in" }, 0.05)
-    .to("#hero-title i", { scale: 0.5, opacity: 0, ease: "power2.in" }, 0.05)
-    .to(".hero-kicker, .hero-vow", { y: -24, opacity: 0, ease: "power2.in" }, 0.08)
-    .to(".scroll-cue", { opacity: 0, ease: "none" }, 0.1)
-    .fromTo(".hero-date, .countdown, .hero-rsvp", { opacity: 0.55 }, { opacity: 1, ease: "none" }, 0.32)
-    .to(".hero-veil", { opacity: 0.62, ease: "none" }, 0.2)
-    .to(".hero-visual, .hero-date, .countdown, .hero-rsvp", { opacity: 0, ease: "power2.in" }, 0.82);
+    .to(".hero-content", { y: -70, opacity: 0, duration: 0.22, ease: "power2.in" }, 0.02)
+    .to(".scroll-cue", { opacity: 0, duration: 0.16, ease: "none" }, 0.04)
+    .to(".hero-visual", {
+      "--hero-inset-top": "0%",
+      "--hero-inset-side": "0%",
+      duration: 0.38,
+      ease: "power2.inOut"
+    }, 0.04)
+    .to(".hero-photo", { scale: 1, yPercent: 0, duration: 0.46, ease: "none" }, 0.04)
+    .to(".hero-veil", { opacity: 0.48, duration: 0.22, ease: "none" }, 0.2)
+    .to(".hero-full-vow", { y: -10, opacity: 1, duration: 0.2, ease: "power2.out" }, 0.38)
+    .to(".hero-date, .countdown, .hero-rsvp", { opacity: 1, duration: 0.2, ease: "power1.out" }, 0.46)
+    .to(".hero-stage", { opacity: 1, duration: 0.34 }, 0.66);
 
   const albumTrack = document.querySelector(".album-track");
   const albumPin = document.querySelector(".album-pin");
@@ -81,7 +106,9 @@ function initHeroMotion() {
 }
 
 function updateHeader() {
-  header.classList.toggle("scrolled", window.scrollY > 24);
+  const hero = document.querySelector(".hero");
+  const heroEnd = hero ? hero.offsetHeight - window.innerHeight * 0.25 : 24;
+  header.classList.toggle("scrolled", window.scrollY > heroEnd);
 }
 
 function updateCountdown() {
