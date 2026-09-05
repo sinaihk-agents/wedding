@@ -5,6 +5,44 @@ const nav = document.querySelector(".site-nav");
 const form = document.querySelector("#rsvp-form");
 const message = document.querySelector(".form-message");
 const calendarButton = document.querySelector("#add-calendar");
+const albumLightbox = document.querySelector("#album-lightbox");
+
+const albumGalleries = {
+  city: {
+    title: "City Romance",
+    kicker: "Central · 15 Photos",
+    alt: "Megan 與 Kenneth 的香港城市婚照",
+    photos: Array.from({ length: 15 }, (_, index) => `assets/album/city/${String(index + 1).padStart(2, "0")}.jpg`)
+  },
+  forest: {
+    title: "Forest Vows",
+    kicker: "Forest · 15 Photos",
+    alt: "Megan 與 Kenneth 的森林與花園婚照",
+    photos: Array.from({ length: 15 }, (_, index) => `assets/album/forest/${String(index + 1).padStart(2, "0")}.jpg`)
+  },
+  studio: {
+    title: "White Studio",
+    kicker: "Studio · 15 Photos",
+    alt: "Megan 與 Kenneth 的白色 studio 婚紗照",
+    photos: Array.from({ length: 15 }, (_, index) => `assets/album/studio/${String(index + 1).padStart(2, "0")}.jpg`)
+  },
+  chapter: {
+    title: "First Chapter",
+    kicker: "School Days · 15 Photos",
+    alt: "Megan 與 Kenneth 的校園風格婚照",
+    photos: Array.from({ length: 15 }, (_, index) => `assets/album/chapter/${String(index + 1).padStart(2, "0")}.jpg`)
+  },
+  harbour: {
+    title: "Harbour & Neon",
+    kicker: "Harbour · 15 Photos",
+    alt: "Megan 與 Kenneth 的海岸與香港日常婚照",
+    photos: Array.from({ length: 15 }, (_, index) => `assets/album/harbour/${String(index + 1).padStart(2, "0")}.jpg`)
+  }
+};
+
+let activeAlbum = null;
+let activePhotoIndex = 0;
+let lastAlbumTrigger = null;
 
 if (calendarButton) {
   const calendarEvent = [
@@ -88,19 +126,6 @@ function initHeroMotion() {
       }
     });
 
-    document.querySelectorAll(".album-slide img").forEach((image) => {
-      gsap.fromTo(image, { xPercent: -4 }, {
-        xPercent: 4,
-        ease: "none",
-        scrollTrigger: {
-          trigger: image.closest(".album-slide"),
-          containerAnimation: albumScroll,
-          start: "left right",
-          end: "right left",
-          scrub: true
-        }
-      });
-    });
   }
 
   window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
@@ -129,6 +154,89 @@ function closeMenu() {
   document.body.classList.remove("menu-open");
   header.classList.remove("open");
   menuToggle.setAttribute("aria-expanded", "false");
+}
+
+function renderAlbumLightbox() {
+  if (!albumLightbox || !activeAlbum) return;
+
+  const gallery = albumGalleries[activeAlbum];
+  const image = albumLightbox.querySelector("#album-lightbox-image");
+  const title = albumLightbox.querySelector("#album-lightbox-title");
+  const kicker = albumLightbox.querySelector("#album-lightbox-kicker");
+  const caption = albumLightbox.querySelector("#album-lightbox-caption");
+  const thumbs = albumLightbox.querySelector("#album-lightbox-thumbs");
+  const photo = gallery.photos[activePhotoIndex];
+
+  title.textContent = gallery.title;
+  kicker.textContent = gallery.kicker;
+  image.src = photo;
+  image.alt = `${gallery.alt} ${activePhotoIndex + 1}`;
+  caption.textContent = `${String(activePhotoIndex + 1).padStart(2, "0")} / ${gallery.photos.length}`;
+
+  thumbs.innerHTML = gallery.photos.map((src, index) => `
+    <button type="button" class="${index === activePhotoIndex ? "is-active" : ""}" data-photo-index="${index}" aria-label="View photo ${index + 1}">
+      <img src="${src}" alt="" />
+    </button>
+  `).join("");
+
+  thumbs.querySelector(".is-active")?.scrollIntoView({ block: "nearest", inline: "center" });
+  new Image().src = gallery.photos[(activePhotoIndex + 1) % gallery.photos.length];
+}
+
+function openAlbum(albumId) {
+  if (!albumLightbox || !albumGalleries[albumId]) return;
+
+  activeAlbum = albumId;
+  activePhotoIndex = 0;
+  lastAlbumTrigger = document.activeElement;
+  albumLightbox.hidden = false;
+  document.body.classList.add("lightbox-open");
+  renderAlbumLightbox();
+  albumLightbox.querySelector(".lightbox-close").focus();
+}
+
+function closeAlbum() {
+  if (!albumLightbox) return;
+
+  albumLightbox.hidden = true;
+  document.body.classList.remove("lightbox-open");
+  activeAlbum = null;
+  activePhotoIndex = 0;
+  if (lastAlbumTrigger && typeof lastAlbumTrigger.focus === "function") {
+    lastAlbumTrigger.focus();
+  }
+}
+
+function moveAlbum(step) {
+  if (!activeAlbum) return;
+
+  const total = albumGalleries[activeAlbum].photos.length;
+  activePhotoIndex = (activePhotoIndex + step + total) % total;
+  renderAlbumLightbox();
+}
+
+document.querySelectorAll(".album-category").forEach((category) => {
+  category.addEventListener("click", () => openAlbum(category.dataset.album));
+  category.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openAlbum(category.dataset.album);
+    }
+  });
+});
+
+if (albumLightbox) {
+  albumLightbox.querySelectorAll("[data-lightbox-close]").forEach((button) => {
+    button.addEventListener("click", closeAlbum);
+  });
+  albumLightbox.querySelector(".lightbox-prev").addEventListener("click", () => moveAlbum(-1));
+  albumLightbox.querySelector(".lightbox-next").addEventListener("click", () => moveAlbum(1));
+  albumLightbox.querySelector("#album-lightbox-thumbs").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-photo-index]");
+    if (!button) return;
+    activePhotoIndex = Number(button.dataset.photoIndex);
+    renderAlbumLightbox();
+  });
 }
 
 menuToggle.addEventListener("click", () => {
@@ -206,6 +314,13 @@ if ("IntersectionObserver" in window) {
 }
 
 window.addEventListener("scroll", updateHeader, { passive: true });
+window.addEventListener("keydown", (event) => {
+  if (!activeAlbum) return;
+
+  if (event.key === "Escape") closeAlbum();
+  if (event.key === "ArrowLeft") moveAlbum(-1);
+  if (event.key === "ArrowRight") moveAlbum(1);
+});
 initHeroMotion();
 updateHeader();
 updateCountdown();
